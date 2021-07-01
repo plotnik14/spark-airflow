@@ -5,10 +5,10 @@ import org.apache.spark.sql.{DataFrame, SaveMode, SparkSession}
 
 object MyJob {
   val PathToInputData = "/airflowfiles/input/"
-  val PathToOutputData = "//airflowfiles/output/"
+  val PathToOutputData = "/airflowfiles/output/"
 
   private val spark = SparkSession.builder
-    .master("local[*]")
+//    .master("local[*]")
     .appName("SparkAirflowTask")
     .config("spark.sql.shuffle.partitions", 16)
     .getOrCreate()
