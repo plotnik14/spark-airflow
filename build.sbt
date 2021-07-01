@@ -14,6 +14,15 @@ libraryDependencies ++= Seq(
   "org.apache.spark" %% "spark-core" % sparkVersion /*% "provided"*/,
   "org.apache.spark" %% "spark-sql" % sparkVersion /*% "provided"*/,
   "org.apache.spark" %% "spark-streaming" % sparkVersion /*% "provided"*/,
+  "org.apache.spark" %% "spark-sql-kafka-0-10" % sparkVersion excludeAll(excludeJpountz),
+  "com.databricks" %% "spark-avro" % "4.0.0",
   "com.typesafe" % "config" % "1.4.1",
   "org.scalatest" %% "scalatest" % "3.0.5" % "test"
 )
+
+assemblyMergeStrategy in assembly := {
+  case "reference.conf" => MergeStrategy.concat
+  case "META-INF/services/org.apache.spark.sql.sources.DataSourceRegister" => MergeStrategy.concat
+  case PathList("META-INF", xs@_*) => MergeStrategy.discard
+  case _ => MergeStrategy.first
+}

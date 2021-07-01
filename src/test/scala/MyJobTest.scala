@@ -30,7 +30,6 @@ class MyJobTest extends FunSuite with BeforeAndAfterAll {
       "srch_ci", "srch_co", "srch_adults_cnt", "srch_children_cnt", "srch_rm_cnt", "srch_destination_id",
       "srch_destination_type_id", "hotel_id")
 
-    MyJob.func(expediaTestData)
 
     assert(1+2 == 3)
   }
